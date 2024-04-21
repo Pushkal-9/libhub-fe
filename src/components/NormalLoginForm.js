@@ -3,20 +3,23 @@ import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import './forms.css';
+import { useUser } from './UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const NormalLoginForm = () => {
+  const { setUser } = useUser(); 
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
     try {
       const response = await axios.post('http://localhost:8080/api/auth/signin', values);
       console.log('Login successful:', response.data);
+      setUser(response.data);
       notification.success({
         message: 'Login Successful',
         description: 'You have successfully logged in!',
       });
-
-      // You may want to do something with the response data here,
-      // like storing user details in local storage or context for further use.
+      navigate('/book-list');
     } catch (error) {
       console.error('Login failed:', error);
       notification.error({

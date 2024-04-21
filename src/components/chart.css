@@ -1,0 +1,21 @@
+.chart-header {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 80%; /* Adjust the width as needed */
+    height: 500px; /* Adjust the height as needed */
+  }
+  
+  .recharts-responsive-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
