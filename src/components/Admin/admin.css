@@ -1,0 +1,13 @@
+/* Assuming the form has a class called 'manage-books-form' */
+.manage-books-form {
+    width: 50%;       /* or whatever width suits your design */
+    margin: 0 auto;   /* this will center the form */
+    display: block;   /* ensures the margin auto takes effect */
+  }  
+/* Assuming the selected tab has a class called 'active-tab' */
+.active-tab {
+    background-color: #4A90E2; /* example color: blue */
+    color: #FFFFFF;            /* changing text color to white for better readability */
+  }
+  
+    

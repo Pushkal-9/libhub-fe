@@ -11,7 +11,7 @@ import SearchBookList from './components/SearchBookList';
 import { UserProvider } from './components/UserContext';
 import UserTransactionsList from './components/UserTransactionList';
 import CustomBarChart from './components/CustomBarChart';
-
+import ManageBooks from './components/Admin/ManageBook';
 
 const App = () => {
   return (
@@ -28,6 +28,8 @@ const App = () => {
                   <Route path="/books/search/:keyword" element={<SearchBookList />} />
                   <Route path="/transactions" element={<UserTransactionsList />} /> 
                   <Route path="/transactions/chart" element={<CustomBarChart />} /> 
+                  <Route path="/admin" element={<ManageBooks />} /> 
+
                   {/* Additional routes can be added here as needed */}
               </Routes>
           </div>
