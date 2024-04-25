@@ -21,10 +21,9 @@
     "v18": "^1.0.2",
     "web-vitals": "^2.1.4"
   },
-  
   "scripts": {
-    "start": "react-scripts start",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack ....",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
