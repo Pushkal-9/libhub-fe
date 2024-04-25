@@ -10,6 +10,7 @@
     "antd": "^5.16.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
+    "cross-env": "^7.0.3",
     "date-fns": "^3.6.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack ....",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
