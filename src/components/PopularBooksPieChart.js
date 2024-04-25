@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from 'recharts';
+import api from './api';
 
 
 
@@ -14,7 +14,7 @@ const PopularBooksPieChart = () => {
   useEffect(() => {
     const fetchPopularBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/books/popular');
+        const response = await api.get('/books/popular');
         setPopularBooks(response.data);
       } catch (error) {
         console.error('Failed to fetch popular books data:', error);

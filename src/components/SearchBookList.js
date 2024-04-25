@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { List, Spin, Card, Row, Col } from 'antd';
 import { useParams } from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
+import api from './api';
 
 function SearchBookList() {
     const [books, setBooks] = useState([]);
@@ -19,7 +19,7 @@ function SearchBookList() {
     useEffect(() => {
         if (keyword) {
             setIsLoading(true);
-            axios.get(`http://localhost:8080/books/search?keyword=${keyword}`)
+            api.get(`/books/search?keyword=${keyword}`)
                 .then(response => {
                     setBooks(response.data);
                     setIsLoading(false);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { List, Spin, Card, Row, Col } from 'antd';
 import {useNavigate} from "react-router-dom";
+import api from './api';
 
 function BookList() {
     const [books, setBooks] = useState([]);
@@ -14,7 +14,7 @@ function BookList() {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:8080/books')
+        api.get('/books')
             .then(response => {
                 setBooks(response.data);
                 setIsLoading(false);

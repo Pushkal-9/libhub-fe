@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Form, Input, Button, notification } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import './forms.css';
+import api from './api';
 
 
 const SignupForm = () => {
@@ -20,7 +20,7 @@ const SignupForm = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/signup', {
+            const response = await api.post('/api/auth/signup', {
                 username: formData.username,
                 email: formData.email,
                 role: [formData.role],  // Adjust according to your role requirements

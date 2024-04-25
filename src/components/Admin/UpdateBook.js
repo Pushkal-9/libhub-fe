@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Form, Input, Button, InputNumber, notification } from 'antd';
+import api from '../api';
 
 const UpdateBook = () => {
 const [bibNumber, setBibNumber] = useState();
@@ -9,7 +9,7 @@ const [bibNumber, setBibNumber] = useState();
 
   const onFinish = async (values) => {
     try {
-      await axios.put(`http://localhost:8080/books/${bibNumber}`, values, {
+      await api.put(`/books/${bibNumber}`, values, {
         headers: {
           'Content-Type': 'application/json'
         }

@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import { Form, Input, Button, notification } from 'antd';
+import api from '../api';
 
 const DeleteItem = () => {
   const [form] = Form.useForm();
@@ -8,7 +8,7 @@ const DeleteItem = () => {
   const onFinish = async (values) => {
     const { itemBarcode } = values;
     try {
-      await axios.delete(`http://localhost:8080/items/${itemBarcode}`, {
+      await api.delete(`/items/${itemBarcode}`, {
         headers: {
           'Content-Type': 'application/json'
         }

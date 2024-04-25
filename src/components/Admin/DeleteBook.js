@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Button, notification, Form, InputNumber } from 'antd';
+import api from '../api';
 
 const DeleteBook = () => {
   const [form] = Form.useForm();
@@ -9,7 +9,7 @@ const DeleteBook = () => {
   const onFinish = async (values) => {
     const { bibNumber } = values;
     try {
-      await axios.delete(`http://localhost:8080/books/${bibNumber}`, {
+      await api.delete(`/books/${bibNumber}`, {
         headers: {
           'Content-Type': 'application/json'
         }

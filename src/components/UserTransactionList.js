@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useUser } from './UserContext';
 import { Spin, Card, Row, Col, List, Button, notification } from 'antd';
+import api from './api';
 
 function UserTransactionsList() {
     const [transactions, setTransactions] = useState([]);
@@ -16,7 +16,7 @@ function UserTransactionsList() {
 
     const fetchTransactions = (userId) => {
         setIsLoading(true);
-        axios.get(`http://localhost:8080/transactions/${userId}`)
+        api.get(`/transactions/${userId}`)
             .then(response => {
                 setTransactions(response.data);
                 setIsLoading(false);
@@ -28,7 +28,7 @@ function UserTransactionsList() {
     };
 
     const handleReturn = (transactionId) => {
-        axios.post(`http://localhost:8080/transactions/return/${transactionId}`, {})
+        api.post(`/transactions/return/${transactionId}`, {})
             .then(response => {
                 notification.success({
                     message: 'Return Successful',

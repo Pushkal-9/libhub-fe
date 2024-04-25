@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Form, Input, Button, InputNumber, notification } from 'antd';
+import api from '../api';
 
 const AddBook = () => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
     try {
-      await axios.post('http://localhost:8080/books', values, {
+      await api.post('/books', values, {
         headers: {
           'Content-Type': 'application/json'
         }

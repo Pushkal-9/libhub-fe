@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { List, Spin, Card, Row, Col, Button, notification } from 'antd';
 import { useUser } from './UserContext';
+import api from './api';
 
 
 function ItemList() {
@@ -19,7 +19,7 @@ function ItemList() {
 
     const fetchItems = () => {
         setIsLoading(true);
-        axios.get(`http://localhost:8080/items/by-book/${bibNumber}`)
+        api.get(`/items/by-book/${bibNumber}`)
             .then(response => {
                 setItems(response.data);
                 setIsLoading(false);
@@ -32,7 +32,7 @@ function ItemList() {
 
     const handleCheckout = async (itemBarcode) => {
         try {
-            const response = await axios.post(`http://localhost:8080/transactions/checkout?userId=${user.id}&itemBarcode=${itemBarcode}`);
+            const response = await api.post(`/transactions/checkout?userId=${user.id}&itemBarcode=${itemBarcode}`);
             console.log('Checkout response:', response); // Log response to see what's happening
             notification.success({
                 message: 'Checkout Successful',

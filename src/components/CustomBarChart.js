@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './chart.css';
+import api from './api';
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
@@ -17,7 +17,7 @@ function CustomBarChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/transactions/count-per-day-last-30-days');
+        const response = await api.get('/transactions/count-per-day-last-30-days');
         const chartData = Object.entries(response.data).map(([key, value]) => ({
           date: formatDate(key),
           count: value

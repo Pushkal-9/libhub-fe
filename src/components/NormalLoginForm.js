@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import axios from 'axios';
 import './forms.css';
 import { useUser } from './UserContext';
 import { useNavigate } from 'react-router-dom';
+import api from './api';
 
 const NormalLoginForm = () => {
   const { setUser } = useUser(); 
@@ -12,7 +12,7 @@ const NormalLoginForm = () => {
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/signin', values);
+      const response = await api.post('/api/auth/signin', values);
       console.log('Login successful:', response.data);
       setUser(response.data);
       notification.success({
