@@ -23,7 +23,7 @@ const SignupForm = () => {
             const response = await api.post('/api/auth/signup', {
                 username: formData.username,
                 email: formData.email,
-                role: [formData.role],  // Adjust according to your role requirements
+                role: ["ROLE_USER"],  // Adjust according to your role requirements
                 password: formData.password
             });
             notification.success({
@@ -60,13 +60,6 @@ const SignupForm = () => {
                     rules={[{ required: true, type: 'email', message: 'Please input a valid email!' }]}
                 >
                     <Input name="email" prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" className="signup-input" onChange={handleChange} />
-                </Form.Item>
-                <Form.Item
-                    label="Role"
-                    name="role"
-                    rules={[{ required: true, message: 'Please input your role!' }]}
-                >
-                    <Input name="role" onChange={handleChange} />
                 </Form.Item>
                 <Form.Item
                     label="Password"
